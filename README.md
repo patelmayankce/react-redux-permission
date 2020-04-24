@@ -1,6 +1,6 @@
 # react-redux-permission
 
-> React Redux Permission
+> React Redux Permission controls rendering of permission components & routes using redux.
 
 [![NPM](https://img.shields.io/npm/v/react-redux-permission.svg)](https://www.npmjs.com/package/react-redux-permission) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -72,6 +72,90 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
+```
+
+## API Reference
+
+### PermissionProvider
+
+By Wrapping up your application with `<PermissionProvider />`, all your  hierarchy components will have ability to work with react-redux-permission.
+
+```tsx
+import { PermissionProvider } from "react-redux-permission";
+
+<PermissionProvider store={store} reducerKey="permission">
+  <App />
+</PermissionProvider>
+```
+
+Has 2 available props
+
+|    params    |   value  |             default value            |   description    |
+|:------------:|:--------:|:------------------------------------:|:----------------:|
+|    store  |  object  |               REQUIRED               | Redux store object. |
+|    reducerKey  |  string  |               reactReduxPermission               | State key of your reducer. |
+
+### Show
+
+A Component can be use when want to render something conditionally, you can pass permission(s) into `when` prop.
+
+```tsx
+import { Show } from "react-redux-permission";
+
+<Show
+  when="feature:delete"
+  fallback={
+    <div>user doesn't have permission to feature:delete</div>
+  }
+>
+  <div>user have feature:delete permission.</div>
+</Show>
+```
+
+Has 2 available props
+
+|    params    |   value  |             default value            |   description    |
+|:------------:|:--------:|:------------------------------------:|:----------------:|
+|    when  |  string / array  |               REQUIRED               | The permission(s) we want to check against. |
+|    fallback  |  ReactNode  |               -               | What to render when the user doesn't have access. |
+
+### useAccess
+
+A hook gives you access to `PermissionContext` context.
+
+#### isLoaded
+
+isLoaded will be false if `definePermission` has never been called. Once `definePermission` is called we assume isLoaded is true. This flag can be used to prevent loading the app until permissions have been fetched and loaded.
+
+```tsx
+definePermission(["feature:read", "feature:write"]);
+```
+
+you can use action too, to define permissions through redux as below.
+
+```tsx
+import { definePermission as define } from "./actions";
+
+import { useDispatch } from 'react-redux';
+
+export const ExampleComponent = () => {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(define(["feature:read", "feature:write"]))
+  },[])
+
+  return <div>example component</div>
+}
+```
+
+#### hasPermission
+
+```tsx
+const canRead = hasPermission("feature:read");
+const canWrite = hasPermission("feature:write");
+const canDelete = hasPermission("feature:delete");
 ```
 
 ## License
