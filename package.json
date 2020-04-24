@@ -1,6 +1,6 @@
 {
   "name": "react-redux-permission",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React Redux Permission",
   "author": "patelmayankce",
   "license": "MIT",
@@ -11,6 +11,17 @@
   "engines": {
     "node": ">=10"
   },
+  "keywords": [
+    "react",
+    "reactjs",
+    "react-redux-permission",
+    "react-redux-access-control",
+    "react-redux",
+    "access-control",
+    "permission",
+    "react-permissions",
+    "react-component"
+  ],
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
