@@ -6,8 +6,10 @@
   "dependencies": {
     "react": "file:../node_modules/react",
     "react-dom": "file:../node_modules/react-dom",
+    "react-redux": "^7.2.0",
+    "react-redux-permission": "file:..",
     "react-scripts": "file:../node_modules/react-scripts",
-    "react-redux-permission": "file:.."
+    "redux": "^4.0.5"
   },
   "scripts": {
     "start": "node ../node_modules/react-scripts/bin/react-scripts.js start",

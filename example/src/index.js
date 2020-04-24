@@ -1,7 +1,19 @@
-import './index.css'
+import "./index.css";
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './App'
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { configureStore } from "./redux/store";
+import { Provider } from "react-redux";
+import { PermissionProvider } from 'react-redux-permission'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+const store = configureStore();
+
+ReactDOM.render(
+  <Provider store={store}>
+    <PermissionProvider store={store} reducerKey="permission">
+      <App />
+    </PermissionProvider>
+  </Provider>,
+  document.getElementById("root")
+);
