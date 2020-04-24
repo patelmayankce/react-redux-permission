@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { definePermission } from "./actions";
+import { definePermission as define } from "./actions";
 import { PermissionContext } from "./PermissionContext";
 
 export interface PermissionProviderProps {
@@ -14,7 +14,9 @@ export const PermissionProvider = (props: PermissionProviderProps) => {
     return null;
   }
 
-  const state: any = store.getState();
+  const { dispatch, getState, subscribe } = store;
+
+  const state: any = getState();
   const permissionsSelector = (state: any) =>
     state[reducerKey] && state[reducerKey].permissions;
   const isLoadedSelector = (state: any) =>
@@ -22,8 +24,8 @@ export const PermissionProvider = (props: PermissionProviderProps) => {
   const [permissions, setPermissions] = useState(permissionsSelector(state));
   const [isLoaded, setIsLoaded] = useState(isLoadedSelector(state));
 
-  store.subscribe(() => {
-    const newState: any = store.getState();
+  subscribe(() => {
+    const newState: any = getState();
     const newPermissions = permissionsSelector(newState);
     const newIsLoaded = isLoadedSelector(newState);
 
@@ -55,14 +57,15 @@ export const PermissionProvider = (props: PermissionProviderProps) => {
     return false;
   };
 
+  const definePermission = (definePermissions: string[]) =>
+    dispatch(define(definePermissions));
+
   return (
     <PermissionContext.Provider
       value={{
-        store,
         permissions,
         hasPermission,
-        definePermission: (definePermissions: string[]) =>
-          store.dispatch(definePermission(definePermissions)),
+        definePermission,
         isLoaded: !!isLoaded
       }}
     >
