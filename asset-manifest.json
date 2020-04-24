@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react-redux-permission/static/css/main.42cc8b22.chunk.css",
+    "main.js": "/react-redux-permission/static/js/main.9768bb15.chunk.js",
+    "main.js.map": "/react-redux-permission/static/js/main.9768bb15.chunk.js.map",
+    "runtime-main.js": "/react-redux-permission/static/js/runtime-main.4e397914.js",
+    "runtime-main.js.map": "/react-redux-permission/static/js/runtime-main.4e397914.js.map",
+    "static/js/2.e5ffc304.chunk.js": "/react-redux-permission/static/js/2.e5ffc304.chunk.js",
+    "static/js/2.e5ffc304.chunk.js.map": "/react-redux-permission/static/js/2.e5ffc304.chunk.js.map",
+    "index.html": "/react-redux-permission/index.html",
+    "precache-manifest.c2c21724772c024e67cbd998a1385d7f.js": "/react-redux-permission/precache-manifest.c2c21724772c024e67cbd998a1385d7f.js",
+    "service-worker.js": "/react-redux-permission/service-worker.js",
+    "static/css/main.42cc8b22.chunk.css.map": "/react-redux-permission/static/css/main.42cc8b22.chunk.css.map",
+    "static/js/2.e5ffc304.chunk.js.LICENSE.txt": "/react-redux-permission/static/js/2.e5ffc304.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4e397914.js",
+    "static/js/2.e5ffc304.chunk.js",
+    "static/css/main.42cc8b22.chunk.css",
+    "static/js/main.9768bb15.chunk.js"
+  ]
+}
