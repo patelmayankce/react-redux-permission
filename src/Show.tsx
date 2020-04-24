@@ -8,7 +8,7 @@ interface ShowProps {
 }
 
 export const Show = ({ when = "", fallback, children, ...rest }: ShowProps) => {
-  const { hasPermission }: PermissionContextProps | any = useContext(
+  const { hasPermission }: PermissionContextProps = useContext(
     PermissionContext
   );
 
