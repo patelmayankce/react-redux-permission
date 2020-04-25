@@ -11,7 +11,7 @@ const initialState: PermissionSchema = {
 
 export const getInitialState = () => JSON.parse(JSON.stringify(initialState));
 
-export const reactReduxPermission = (
+export const permissionsReducer = (
   state = getInitialState(),
   action: any
 ) => {

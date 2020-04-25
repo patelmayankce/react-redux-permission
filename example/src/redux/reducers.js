@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import { reactReduxPermission } from "react-redux-permission";
+import { permissionsReducer as permissions } from "react-redux-permission";
 
 export default combineReducers({
-  permission: reactReduxPermission
+  permissions
 });

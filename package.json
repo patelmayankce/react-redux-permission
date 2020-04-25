@@ -1,6 +1,6 @@
 {
   "name": "react-redux-permission",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React Redux Permission",
   "author": "patelmayankce",
   "license": "MIT",
@@ -15,10 +15,13 @@
     "react",
     "reactjs",
     "react-redux-permission",
+    "react-redux-permissions",
     "react-redux-access-control",
     "react-redux",
     "access-control",
     "permission",
+    "permissions",
+    "react-permission",
     "react-permissions",
     "react-component"
   ],

@@ -8,7 +8,7 @@ export interface PermissionProviderProps {
   reducerKey?: string;
 }
 export const PermissionProvider = (props: PermissionProviderProps) => {
-  const { store, children, reducerKey = "reactReduxPermission" } = props;
+  const { store, children, reducerKey = "permissionsReducer" } = props;
 
   if (!store) {
     return null;

@@ -10,7 +10,31 @@
 npm install --save react-redux-permission
 ```
 
+## Features
+- Restrict views and components
+- Provide a fallback component for users without permission
+- Designed for react-redux
+- SSR Support
+- Hooks support
+
+
 ## Usage
+
+### Reducer
+
+```tsx
+import { createStore, compose } from 'redux';
+import { combineReducers } from "redux";
+import { permissionsReducer as permissions } from "react-redux-permission";
+
+export const configureStore = (initialState = {}) => {
+  return createStore(
+    combineReducers({
+      permissions,
+    }), initialState,);
+}
+
+```
 
 ```tsx
 import React, { useEffect } from "react";
@@ -29,8 +53,6 @@ const App = () => {
   }, []);
 
   const canRead = hasPermission("feature:read");
-  const canWrite = hasPermission("feature:write");
-  const canDelete = hasPermission("feature:delete");
 
   if (!isLoaded) return <div>LOADING...</div>;
 
@@ -38,27 +60,16 @@ const App = () => {
     <div>
       <div>feature:read Access ({`${canRead}`})</div>
       <div>feature:write Access ({`${canWrite}`})</div>
-      <div>feature:delete Access ({`${canDelete}`})</div>
       <Show when="feature:read">
         <div>i'm visible because the user has the feature:read permission.</div>
       </Show>
-      <Show when="feature:write">
-        <div>
-          i'm visible because the user has the feature:write permission.
-        </div>
-      </Show>
       <Show
-        when="feature:delete"
+        when="feature:write"
         fallback={
-          <div>
-            I'm a fallback that's rendering because the user doesn't have access
-            to feature:delete
-          </div>
+          <div>I'm a fallback that's rendering because the user doesn't have access to feature:delete</div>
         }
       >
-        <div>
-          i'm visible because the user has the feature:delete permission.
-        </div>
+        <div>i'm visible because the user has the feature:delete permission.</div>
       </Show>
     </div>
   );
@@ -66,7 +77,7 @@ const App = () => {
 
 ReactDOM.render(
   <Provider store={store}>
-    <PermissionProvider store={store} reducerKey="permission">
+    <PermissionProvider store={store} reducerKey="permissions">
       <App />
     </PermissionProvider>
   </Provider>,
@@ -93,7 +104,7 @@ Has 2 available props
 |    params    |   value  |             default value            |   description    |
 |:------------:|:--------:|:------------------------------------:|:----------------:|
 |    store  |  object  |               REQUIRED               | Redux store object. |
-|    reducerKey  |  string  |               reactReduxPermission               | State key of your reducer. |
+|    reducerKey  |  string  |               permissionsReducer               | State key of your reducer. |
 
 ### Show
 

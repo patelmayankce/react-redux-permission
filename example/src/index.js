@@ -11,7 +11,7 @@ const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <PermissionProvider store={store} reducerKey="permission">
+    <PermissionProvider store={store} reducerKey="permissions">
       <App />
     </PermissionProvider>
   </Provider>,
