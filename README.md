@@ -144,7 +144,7 @@ definePermission(["feature:read", "feature:write"]);
 you can use action too, to define permissions through redux as below.
 
 ```tsx
-import { definePermission as define } from "./actions";
+import { definePermission as define } from "react-redux-permission";
 
 import { useDispatch } from 'react-redux';
 
