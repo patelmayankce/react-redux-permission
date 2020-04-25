@@ -33,7 +33,6 @@ export const configureStore = (initialState = {}) => {
       permissions,
     }), initialState,);
 }
-
 ```
 
 ```tsx
