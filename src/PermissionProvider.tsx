@@ -38,7 +38,10 @@ export const PermissionProvider = (props: PermissionProviderProps) => {
     }
   });
 
-  const hasPermission = (allowedPermissions: string[] | string) => {
+  const hasPermission = (
+    allowedPermissions: string[] | string,
+    orAllowedPermissions?: string[] | string
+  ) => {
     if (permissions) {
       let checkPermission = true;
 
@@ -51,6 +54,24 @@ export const PermissionProvider = (props: PermissionProviderProps) => {
           checkPermission = false;
         }
       });
+
+      // OR PERMISSION
+      if (
+        typeof orAllowedPermissions === "string" ||
+        typeof orAllowedPermissions === "object"
+      ) {
+        let orCheckPermission = true;
+        if (typeof orAllowedPermissions === "string") {
+          return permissions.indexOf(orAllowedPermissions) !== -1;
+        }
+
+        orAllowedPermissions.forEach(ap => {
+          if (permissions.indexOf(ap) === -1) {
+            orCheckPermission = false;
+          }
+        });
+        return checkPermission || orCheckPermission;
+      }
 
       return checkPermission;
     }

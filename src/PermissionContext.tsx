@@ -2,7 +2,10 @@ import React from "react";
 
 export interface PermissionContextProps {
   isLoaded: boolean;
-  hasPermission: (allowedPermissions: string[] | string) => boolean;
+  hasPermission: (
+    allowedPermissions: string[] | string,
+    orAllowedPermissions?: string[] | string
+  ) => boolean;
   definePermission: (permissions: string[]) => void;
   permissions: string[];
 }
