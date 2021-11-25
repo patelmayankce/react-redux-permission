@@ -8,8 +8,14 @@ export const useAccess = () => {
     isLoaded
   }: PermissionContextProps = useContext(PermissionContext);
 
-  const hasPermission = (permissions: string[] | string) => {
-    return useMemo(() => checkPermission(permissions), [permissions]);
+  const hasPermission = (
+    permissions: string[] | string,
+    orPermissions?: string[] | string
+  ) => {
+    return useMemo(() => checkPermission(permissions, orPermissions), [
+      permissions,
+      orPermissions
+    ]);
   };
 
   return { isLoaded, hasPermission, definePermission };
